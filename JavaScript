@@ -1,0 +1,60 @@
+const govtJobs = [
+    {
+        title: "WBPSC ক্লার্কশিপ পরীক্ষা",
+        organization: "পশ্চিমবঙ্গ পাবলিক সার্ভিস কমিশন",
+        link: "https://wbpsc.gov.in/"
+    },
+    {
+        title: "পশ্চিমবঙ্গ পুলিশ কনস্টেবল নিয়োগ",
+        organization: "পশ্চিমবঙ্গ পুলিশ রিক্রুটমেন্ট বোর্ড",
+        link: "https://wbpolice.gov.in/"
+    },
+    {
+        title: "ডব্লিউবিসিএস (এগজিকিউটিভ) পরীক্ষা",
+        organization: "WBPSC",
+        link: "https://wbpsc.gov.in/"
+    }
+];
+
+const pvtJobs = [
+    {
+        title: "সফটওয়্যার ডেভেলপার",
+        organization: "টিসিএস (TCS)",
+        link: "https://www.tcs.com/careers/india"
+    },
+    {
+        title: "ডাটা এন্ট্রি অপারেটর",
+        organization: "উইপ্রো (Wipro)",
+        link: "https://careers.wipro.com/"
+    },
+    {
+        title: "মার্কেটিং ম্যানেজার",
+        organization: "রিলায়েন্স (Reliance)",
+        link: "https://www.ril.com/careers"
+    }
+];
+
+function createJobCard(job) {
+    const card = document.createElement('div');
+    card.classList.add('job-card');
+    card.innerHTML = `
+        <h3>${job.title}</h3>
+        <p><strong>সংস্থা:</strong> ${job.organization}</p>
+        <a href="${job.link}" class="apply-link" target="_blank">আবেদন করুন</a>
+    `;
+    return card;
+}
+
+function renderJobs(jobs, containerId) {
+    const container = document.getElementById(containerId);
+    jobs.forEach(job => {
+        const jobCard = createJobCard(job);
+        container.appendChild(jobCard);
+    });
+}
+
+// চাকরির তালিকা লোড করা হচ্ছে
+document.addEventListener('DOMContentLoaded', () => {
+    renderJobs(govtJobs, 'govt-jobs');
+    renderJobs(pvtJobs, 'pvt-jobs');
+});
